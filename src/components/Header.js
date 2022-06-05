@@ -9,7 +9,7 @@ const Header = function (props) {
             </h2>
 
             <a
-                href="https://www.google.com"
+                href="https://github.com/Karthik-315/react-to-do-list-app"
                 target="_blank"
                 rel="noreferrer"
                 className="h-14 w-14 flex lg:h-20 lg:w-20"
