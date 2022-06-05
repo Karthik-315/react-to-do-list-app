@@ -1,13 +1,119 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer components {
+    * {
+        @apply box-border;
+    }
+
+    html {
+        @apply text-[10px] lg:text-sm;
+    }
+
+    body {
+        @apply relative p-0 m-0 flex flex-col bg-[url("./assets/images/bg-resized.png")] bg-no-repeat bg-center bg-cover;
+    }
+
+    .overlay {
+        @apply absolute inset-0 bg-black/70 -z-[2];
+    }
+
+    .header,
+    .footer {
+        @apply flex justify-between items-center h-24 w-full px-10 py-5;
+    }
+
+    .form-user-input {
+        @apply form-input w-full h-20 pt-7 pl-2 pr-20 text-3xl tracking-wide bg-slate-50/95 ring-2 ring-indigo-300/75 rounded-md 
+        hover:bg-slate-50/100 focus:ring-2 focus:bg-slate-50/100 focus:ring-indigo-500 
+        valid:bg-slate-50/100 valid:ring-indigo-700 transition-[shadow_colors] duration-300 ease-in-out;
+    }
+
+    .input-label {
+        @apply absolute top-1/3 flex h-full w-full pl-4 pointer-events-none text-gray-700 text-2xl tracking-widest
+        peer-focus:top-1 peer-focus:pl-2 peer-focus:text-sm peer-focus:uppercase peer-focus:text-indigo-500 peer-focus:font-bold 
+        peer-valid:top-1 peer-valid:pl-2 peer-valid:text-sm peer-valid:uppercase peer-valid:text-indigo-500 peer-valid:font-bold
+        transition-[top_padding] duration-300 ease-in-out;
+    }
+
+    /* width */
+    ::-webkit-scrollbar {
+        width: 7px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: rgba(199, 210, 254, 0.5);
+        border-radius: 3px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: rgba(67, 56, 202, 0.5);
+        border-radius: 3px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(55, 48, 163, 0.5);
+    }
+
+    .task-container {
+        @apply relative min-h-[5.25rem] mr-2 px-2 bg-black/60 text-white ring-2 ring-indigo-300/50
+        hover:bg-black hover:ring-indigo-400 transition-[height_colors] duration-200 ease-in;
+    }
+
+    .task-container--full {
+        @apply h-full;
+    }
+
+    .task--text {
+        @apply text-2xl line-clamp-1 leading-[5rem] pointer-events-none transition-[line-clamp] duration-300 ease-in;
+    }
+
+    .task-container--full > .task--text {
+        @apply py-5 leading-10 line-clamp-none;
+    }
+
+    .toggle-full-text-button {
+        @apply absolute bottom-0.5 left-1/2 -translate-x-1/2 transition-transform duration-700;
+    }
+
+    .button--flipped {
+        @apply rotate-180;
+    }
+
+    .down-arrow {
+        opacity: 0.75;
+        filter: invert(81%) sepia(96%) saturate(15%) hue-rotate(248deg) brightness(105%)
+            contrast(104%);
+        transition: opacity 300ms ease;
+    }
+
+    .task-container:hover .down-arrow {
+        opacity: 1;
+    }
+
+    .task--buttons {
+        @apply h-20 flex items-center;
+    }
+
+    .task--buttons-full {
+        @apply h-full;
+    }
+
+    .task--check-button,
+    .task--delete-button {
+        @apply flex justify-center items-center h-20 w-20 mx-1 ring-2 bg-black/20 ring-indigo-300/70
+        hover:ring-indigo-300/0 hover:bg-black/70 transition-colors duration-300 ease-in-out;
+    }
+
+    .task--delete-button {
+        @apply ring-rose-500 bg-black/20 hover:bg-rose-100;
+    }
+
+    .footer {
+        @apply h-10 bg-black/30;
+    }
 }
